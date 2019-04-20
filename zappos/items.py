@@ -11,6 +11,7 @@ import scrapy
 class ZapposItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    Brand = scrapy.Field()
     Product  = scrapy.Field()
     Price = scrapy.Field()
     True_size_feeling = scrapy.Field()
@@ -19,7 +20,7 @@ class ZapposItem(scrapy.Item):
     Overall_rating = scrapy.Field()
     Comfort_rating = scrapy.Field()
     Style_rating = scrapy.Field()
-    Fit_sm_lg = scrapy.Field()
-    Fit_na_wd = scrapy.Field()
-    Fit_arch_support = scrapy.Field()
+    Size_rating = scrapy.Field()
+    Width_rating = scrapy.Field()
+    Arch_rating = scrapy.Field()
     Review_text = scrapy.Field()

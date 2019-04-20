@@ -4,8 +4,19 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
+from scrapy.exporters import CsvItemExporter
 
 class ZapposPipeline(object):
-    def process_item(self, item, spider):
-        return item
+	def __init__(self):
+		self.filename = 'zappos_reviews.csv'
+	def open_spider(self,spider):
+		self.csvfile = open(self.filename,'wb')
+		self.exporter = CsvItemExporter(self.csvfile)
+		self.exporter.fields_to_export = ['Brand', 'Product', 'Price', 'True_size_feeling', 'True_width_feeling', 'Arch_support','Comfort_rating','Style_rating','Overall_rating','Size_rating','Width_rating','Arch_rating','Review_text']
+		self.exporter.start_exporting()
+	def close_spider(self,spider):
+		self.exporter.finish_exporting()
+		self.csvfile.close()
+	def process_item(self, item, spider):
+		self.exporter.export_item(item)
+		return item
