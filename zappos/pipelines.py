@@ -12,7 +12,7 @@ class ZapposPipeline(object):
 	def open_spider(self,spider):
 		self.csvfile = open(self.filename,'wb')
 		self.exporter = CsvItemExporter(self.csvfile)
-		self.exporter.fields_to_export = ['Brand', 'Product', 'Price', 'True_size_feeling', 'True_width_feeling', 'Arch_support','Comfort_rating','Style_rating','Overall_rating','Size_rating','Width_rating','Arch_rating','Review_text']
+		self.exporter.fields_to_export = ['Brand', 'Product', 'Price', 'True_size_feeling', 'True_width_feeling', 'Arch_support','Comfort_rating','Style_rating','Overall_rating','Review_text']
 		self.exporter.start_exporting()
 	def close_spider(self,spider):
 		self.exporter.finish_exporting()
